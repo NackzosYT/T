@@ -126,46 +126,6 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
     }
   });
     
-client.on('message', message => {
-    if(message.content.includes('discord.gg')){
-                                            if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
-        if (!message.member.hasPermissions(['ADMINISTRATOR'])){
-        message.delete()
-    return message.reply(`** يمنع نشر الروابط بالسيرفر :angry: ! **`)
-    }
-}
-});
-
-
-
-
-
-
-
-client.on('message', message => {
-    if(message.content.includes('youtube.com')){
-                                            if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
-        if (!message.member.hasPermissions(['ADMINISTRATOR'])){
-        message.delete()
-    return message.reply(`** يمنع نشر الروابط بالسيرفر :angry: ! **`)
-    }
-}
-});
-
-
-
-
-client.on('message', message => {
-    if(message.content.includes('https://')){
-                                            if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
-        if (!message.member.hasPermissions(['ADMINISTRATOR'])){
-        message.delete()
-    return message.reply(`** يمنع نشر الروابط بالسيرفر :angry: ! **`)
-    }
-}
-});
-
-
 
 
 
