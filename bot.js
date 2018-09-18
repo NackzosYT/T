@@ -18,6 +18,7 @@ client.user.setGame(`WingsCenter©`,"http://twitch.tv/nackzos")
 // !$say
 
 client.on('message', message => {
+          var prefix = "w";
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
