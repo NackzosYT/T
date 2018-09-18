@@ -112,10 +112,6 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
 
 
 
-
-
-
-
   client.on('message', message => {
     if(message.content == 'wmem') {
     const embed = new Discord.RichEmbed()
@@ -130,8 +126,6 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
     }
   });
     
-
-
 client.on('message', message => {
     if(message.content.includes('discord.gg')){
                                             if(!message.channel.guild) return message.reply('** advertising me on DM ? :thinking:   **');
@@ -141,6 +135,10 @@ client.on('message', message => {
     }
 }
 });
+
+
+
+
 
 
 
@@ -230,65 +228,6 @@ client.on('message', message => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-client.on('message', msg => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
-  let command = msg.content.split(" ")[0];
-  command = command.slice(prefix.length);
-  let args = msg.content.split(" ").slice(1);
-
-    if(command === "امسح") {
-    let textxt = args.slice(0).join("");
-    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-    if (textxt == "") {
-        msg.delete().then
-    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
-} else {
-    msg.delete().then
-    msg.delete().then
-    msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
-        }    
-    }
-}
-});
-
-
-
-
-
-client.on('message', msg => {
-  if (msg.author.bot) return;
-  if (!msg.content.startsWith(prefix)) return;
-  let command = msg.content.split(" ")[0];
-  command = command.slice(prefix.length);
-  let args = msg.content.split(" ").slice(1);
-
-    if(command === "wclear") {
-    let textxt = args.slice(0).join("");
-    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-    if (textxt == "") {
-        msg.delete().then
-    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
-} else {
-    msg.delete().then
-    msg.delete().then
-    msg.channel.bulkDelete(textxt);
-        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
-        }    
-    }
-}
-});
 
 
 
