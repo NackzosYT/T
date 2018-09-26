@@ -4,7 +4,7 @@ const prefix = 'w'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`WingsCenter©`,"http://twitch.tv/nackzos")
+client.user.setGame(`WingsCommunity©`,"http://twitch.tv/nackzos")
   console.log(' Bot Is Online')
 });
 
