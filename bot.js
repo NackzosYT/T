@@ -103,13 +103,13 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
 
 
  client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', 'welcome');
+  const channel = member.guild.channels.find('name', '『welcome』');
   if (!channel) return;
   let memberavatar = member.user.avatarURL
   let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setThumbnail(memberavatar)
-    .addField('***نورت سيرفر يرجئ قرائه القوانين***',`**[${member}]**`)
+    .addField('**Welcome To Dream,Server** :rose: ***:*** ',`**[${member}]**`)
     .addField('***انت العضو رقم***',`**[${member.guild.memberCount}]**`)
     channel.send({embed:embed});
 }
@@ -118,7 +118,7 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
 
 
  client.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', 'welcome');
+  const channel = member.guild.channels.find('name', '『welcome』');
   if (!channel) return;
   let memberavatar = member.user.avatarURL
   let embed = new Discord.RichEmbed()
