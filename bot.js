@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = 'w'
+const prefix = 'D'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`WingsCommunity©`,"http://twitch.tv/nackzos")
+client.user.setGame(`Dream , Server`,"http://twitch.tv/nackzos")
   console.log(' Bot Is Online')
 });
 
@@ -18,7 +18,7 @@ client.user.setGame(`WingsCommunity©`,"http://twitch.tv/nackzos")
 // !$say
 
 client.on('message', message => {
-          var prefix = "w";
+          var prefix = "D";
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
@@ -63,7 +63,7 @@ client.on('message', msg => {
 
 
 client.on('message', message => {
-          var prefix = "w";
+          var prefix = "D";
     if(message.content.startsWith(prefix + 'avatar')) {
         var mentionned = message.mentions.users.first();
           var getvalueof;
@@ -85,12 +85,12 @@ client.on('message', message => {
 
 
 client.on('ready', () => {
-  console.log(`ViprBot`);
+  console.log(`Dream`);
 
 });
 //Hixx
 client.on('message', message => {
-if (message.content.split(' ')[0] == 'wbc2')
+if (message.content.split(' ')[0] == 'Dbc2')
  message.guild.members.forEach( member => {
          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
 member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.content.substr(3));
@@ -133,7 +133,7 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
 
 
   client.on('message', message => {
-    if(message.content == 'wmem') {
+    if(message.content == 'Dmem') {
     const embed = new Discord.RichEmbed()
     .setDescription(`**Members info🔋
 :green_heart: online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
@@ -155,10 +155,10 @@ client.on('message', message => {
         if (message.guild) {
        let embed = new Discord.RichEmbed()
         let args = message.content.split(' ').slice(1).join(' ');
-                var prefix = "w";
+                var prefix = "D";
     if(message.content.split(' ')[0] == prefix + 'bc') {
         if (!args[1]) {
-    message.channel.send("**wbc <message>**");
+    message.channel.send("**Dbc <message>**");
     return;
     }
             message.guild.members.forEach(m => {
@@ -189,7 +189,7 @@ client.on('message', message => {
 
 
  client.on("message", msg => {
-           var prefix = "w";
+           var prefix = "D";
   if(msg.content.startsWith (prefix + "id")) {
     if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
       const embed = new Discord.RichEmbed();
