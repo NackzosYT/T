@@ -109,7 +109,7 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
   let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setThumbnail(memberavatar)
-    .addField('**Welcome To Dream,Server** :rose: ***:*** ',`**[${member}]**`)
+    .addField('**Welcome To Night,Server** :rose: ***:*** ',`**[${member}]**`)
     .addField('***انت العضو رقم***',`**[${member.guild.memberCount}]**`)
     channel.send({embed:embed});
 }
