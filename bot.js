@@ -85,7 +85,7 @@ client.on('message', message => {
 
 
 client.on('ready', () => {
-  console.log(`Dream`);
+  console.log(`Night`);
 
 });
 //Hixx
@@ -103,7 +103,7 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
 
 
  client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', '『welcome』');
+  const channel = member.guild.channels.find('name', '💬『chat』');
   if (!channel) return;
   let memberavatar = member.user.avatarURL
   let embed = new Discord.RichEmbed()
@@ -118,7 +118,7 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
 
 
  client.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', '『welcome』');
+  const channel = member.guild.channels.find('name', 'log');
   if (!channel) return;
   let memberavatar = member.user.avatarURL
   let embed = new Discord.RichEmbed()
