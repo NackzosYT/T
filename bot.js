@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = 'N'
+const prefix = 'S'
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Night , Server`,"http://twitch.tv/nackzos")
+client.user.setGame(`Secrecy , Server`,"http://twitch.tv/nackzos")
   console.log(' Bot Is Online')
 });
 
@@ -18,7 +18,7 @@ client.user.setGame(`Night , Server`,"http://twitch.tv/nackzos")
 // !$say
 
 client.on('message', message => {
-          var prefix = "N";
+          var prefix = "S";
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
@@ -63,7 +63,7 @@ client.on('message', msg => {
 
 
 client.on('message', message => {
-          var prefix = "N";
+          var prefix = "S";
     if(message.content.startsWith(prefix + 'avatar')) {
         var mentionned = message.mentions.users.first();
           var getvalueof;
@@ -85,12 +85,12 @@ client.on('message', message => {
 
 
 client.on('ready', () => {
-  console.log(`Night`);
+  console.log(`Secrecy`);
 
 });
 //Hixx
 client.on('message', message => {
-if (message.content.split(' ')[0] == 'Nbc2')
+if (message.content.split(' ')[0] == 'Sbc2')
  message.guild.members.forEach( member => {
          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
 member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.content.substr(3));
@@ -109,7 +109,7 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
   let embed = new Discord.RichEmbed()
     .setColor('RANDOM')
     .setThumbnail(memberavatar)
-    .addField('**Welcome To Night,Server** :rose: ***:*** ',`**[${member}]**`)
+    .addField('**Welcome To Secrecy,Server** :rose: ***:*** ',`**[${member}]**`)
     .addField('***انت العضو رقم***',`**[${member.guild.memberCount}]**`)
     channel.send({embed:embed});
 }
@@ -133,7 +133,7 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
 
 
   client.on('message', message => {
-    if(message.content == 'Nmem') {
+    if(message.content == 'Smem') {
     const embed = new Discord.RichEmbed()
     .setDescription(`**Members info🔋
 :green_heart: online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
@@ -155,10 +155,10 @@ client.on('message', message => {
         if (message.guild) {
        let embed = new Discord.RichEmbed()
         let args = message.content.split(' ').slice(1).join(' ');
-                var prefix = "N";
+                var prefix = "S";
     if(message.content.split(' ')[0] == prefix + 'bc') {
         if (!args[1]) {
-    message.channel.send("**Nbc <message>**");
+    message.channel.send("**Sbc <message>**");
     return;
     }
             message.guild.members.forEach(m => {
@@ -189,7 +189,7 @@ client.on('message', message => {
 
 
  client.on("message", msg => {
-           var prefix = "N";
+           var prefix = "S";
   if(msg.content.startsWith (prefix + "id")) {
     if(!msg.channel.guild) return msg.reply('**:x: اسف لكن هذا الامر للسيرفرات فقط **');         
       const embed = new Discord.RichEmbed();
