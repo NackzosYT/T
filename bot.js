@@ -18,8 +18,8 @@ client.on('message', message => {
     if (message.content.startsWith("رابط")) {
         message.channel.createInvite({
         thing: true,
-        maxUses: 1,
-        maxAge: 3600,
+        maxUses: 100,
+        maxAge: 36000,
     }).then(invite =>
       message.author.sendMessage(invite.url)
     )
@@ -34,7 +34,7 @@ client.on('message', message => {
               const Embed11 = new Discord.RichEmbed()
         .setColor("RANDOM")
         
-    .setDescription(" مدة الرابط : ساعه  عدد استخدامات الرابط : 1 ")
+    .setDescription(" مدة الرابط : ساعه  عدد استخدامات الرابط : 100 ")
       message.author.sendEmbed(Embed11)
     }
 });
