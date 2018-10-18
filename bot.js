@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Secrecy , Server`,"http://twitch.tv/nackzos")
+client.user.setGame(`Nine,Server`,"http://twitch.tv/nackzos")
   console.log(' Bot Is Online')
 });
 
