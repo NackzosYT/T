@@ -85,24 +85,6 @@ client.on('message', msg => {
 
 
 
-client.on('guildMemberAdd', Sal => { //By Salto7#4595
-    var embed = new Discord.RichEmbed()
-    .setAuthor(Sal.user.username, Sal.user.avatarURL)
-    .setThumbnail(Sal.user.avatarURL)
-    .setTitle('عضو جديد!')
-    .setDescription('مرحبا بك بالسيرفر')
-    .addField('``ايدي العضو``:',"" +  Sal.user.id, true)
-    .addField('``تاق العضو``', Sal.user.discriminator, true)
-    .addField('``تم الانشاء في``', Sal.user.createdAt, true)
-    .addField(' 👤  انت رقم',`**[ ${Sal.guild.memberCount} ]**`,true)
-    .setColor('RANDOM')
-    .setFooter(Sal.guild.name, Sal.guild.iconURL, true)
-    var channel =Sal.guild.channels.find('name', 'nine') // هنا حط اسم الروم الي تبيه يكتب فيه
-    if (!channel) return;
-    channel.send({embed : embed});
-    });
-
-
 
 
 
