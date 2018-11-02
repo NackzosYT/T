@@ -111,19 +111,8 @@ client.on('message', message => {
 
 
 client.on('ready', () => {
-  console.log(`Secrecy`);
+  console.log(`Smooth`);
 
-});
-//Hixx
-client.on('message', message => {
-                  var prefix = "S";
-    if(message.content.split(' ')[0] == prefix + 'bc2') {
- message.guild.members.forEach( member => {
-         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
-member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.content.substr(3));
-                                                            message.delete();
-});
-});
 
 
 
