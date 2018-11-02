@@ -118,34 +118,6 @@ client.on('ready', () => {
 
 
 
- client.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.find('name', '『ωєℓcσмє』');
-  if (!channel) return;
-  let memberavatar = member.user.avatarURL
-  let embed = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setThumbnail(memberavatar)
-    .addField('**Welcome To Secrecy,Server** :rose: ***:*** ',`**[${member}]**`)
-    .addField('***انت العضو رقم***',`**[${member.guild.memberCount}]**`)
-    channel.send({embed:embed});
-}
-);
-
-
-
- client.on('guildMemberRemove', member => {
-  const channel = member.guild.channels.find('name', '『ωєℓcσмє』');
-  if (!channel) return;
-  let memberavatar = member.user.avatarURL
-  let embed = new Discord.RichEmbed()
-    .setColor('RANDOM')
-    .setThumbnail(memberavatar)
-    .addField('***3/> ..رحل يروح ويجي غيره: ّ ( ***',`**[${member}]**`)
-    .addField('***عدد الاعضاء الان***',`**[${member.guild.memberCount}]**`)
-    channel.send({embed:embed});
-}
-);
-
 
 
   client.on('message', message => {
