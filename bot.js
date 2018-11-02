@@ -3,13 +3,13 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`Nine,Server`,"http://twitch.tv/nackzos")
+client.user.setGame(` SmooTH,ForEver`,"http://twitch.tv/nackzos")
   console.log(' Bot Is Online')
 });
 
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', 'Nine'));
+member.addRole(member.guild.roles.find('name', 'Smo͞oT͟H'));
 });
 
 
@@ -41,7 +41,7 @@ client.on('message', message => {
 // !$say
 
 client.on('message', message => {
-          var prefix = "N";
+          var prefix = "S";
   if (message.author.bot) return;
   if (!message.content.startsWith(prefix)) return;
 
@@ -89,7 +89,7 @@ client.on('message', msg => {
 
 
 client.on('message', message => {
-          var prefix = "N";
+          var prefix = "S";
     if(message.content.startsWith(prefix + 'avatar')) {
         var mentionned = message.mentions.users.first();
           var getvalueof;
@@ -116,7 +116,8 @@ client.on('ready', () => {
 });
 //Hixx
 client.on('message', message => {
-if (message.content.split(' ')[0] == 'Nbc2')
+                  var prefix = "S";
+    if(message.content.split(' ')[0] == prefix + 'bc2') {
  message.guild.members.forEach( member => {
          if (!message.member.hasPermission("ADMINISTRATOR"))  return;
 member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.content.substr(3));
@@ -159,7 +160,7 @@ member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.con
 
 
   client.on('message', message => {
-    if(message.content == 'Nmem') {
+    if(message.content == 'Smem') {
     const embed = new Discord.RichEmbed()
     .setDescription(`**Members info🔋
 :green_heart: online:   ${message.guild.members.filter(m=>m.presence.status == 'online').size}
@@ -181,10 +182,10 @@ client.on('message', message => {
         if (message.guild) {
        let embed = new Discord.RichEmbed()
         let args = message.content.split(' ').slice(1).join(' ');
-                var prefix = "N";
+                var prefix = "S";
     if(message.content.split(' ')[0] == prefix + 'bc') {
         if (!args[1]) {
-    message.channel.send("**Nbc <message>**");
+    message.channel.send("**Sbc <message>**");
     return;
     }
             message.guild.members.forEach(m => {
@@ -192,7 +193,6 @@ client.on('message', message => {
                 var bc = new Discord.RichEmbed()
                 .setAuthor(message.author.username, message.author.avatarURL)
                 .addField('Server:', `${message.guild.name}`,true)
-                .addField('By:', `${message.author.username}#${message.author.discriminator}`,true)
                 .addField('message:', args)
                 .setThumbnail(message.guild.iconURL)
                 .setColor('RANDOM')
