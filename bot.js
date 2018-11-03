@@ -76,15 +76,6 @@ if (command == "emb") {
 
 
 
-client.on('message', msg => {
-  if (msg.content === 'السلام عليكم') {
-    msg.reply('**وعليكم السلام**');
-  }
-});
-
-
-
-
 
 
 
@@ -108,10 +99,6 @@ client.on('message', message => {
 
 
 
-
-
-client.on('ready', () => {
-  console.log(`Smooth`);
 
 
 
