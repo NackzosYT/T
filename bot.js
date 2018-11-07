@@ -3,13 +3,13 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(` SmooTH,ForEver`,"http://twitch.tv/nackzos")
+client.user.setGame(`Śtranger,ForEver🌹`,"http://twitch.tv/nackzos")
   console.log(' Bot Is Online')
 });
 
 
 client.on('guildMemberAdd', (member) => {
-member.addRole(member.guild.roles.find('name', 'Smo͞oT͟H'));
+member.addRole(member.guild.roles.find('name', '• Śtranger'));
 });
 
 
