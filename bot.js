@@ -23,7 +23,7 @@ client.on('ready', () => {
     client.user.setStatus("Online")
 });
   client.on('ready', () => {
-     client.user.setActivity("CODES",{type: 'LISTENING'});
+     client.user.setActivity("Stranger,Server",{type: 'LISTENING'});
  
 });
  
