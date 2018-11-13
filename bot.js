@@ -228,7 +228,6 @@ client.on('message', message => {
         .addField('queue', 'اظهار قائمة التشغيل')
         .addField('np', 'اظهار الاغنية اللي انت مشغلها حاليا')
         .addField('inv', 'لدعوة البوت لسيرفرك')
-        .addField('ping', 'لرؤيه بنق البوت')
       message.channel.send(helpEmbed);
     }
 });
@@ -246,16 +245,7 @@ client.on('message', message => {
 
 
 
-    if(command === `ping`) {
-    let embed = new Discord.RichEmbed()
-    .setColor(3447003)
-    .setTitle("Pong!!")
-    .setDescription(`${client.ping} ms,`)
-    .setFooter(`Requested by | ${msg.author.tag}`);
-    msg.delete().catch(O_o=>{})
-    msg.channel.send(embed);
-    }
-});
+ 
 
 
 client.on('ready', () => {
@@ -269,16 +259,6 @@ client.user.setGame(`*play | Last Music`,"http://twitch.tv/nackzosyt")
 client.user.setStatus("dnd")
 });
 
-    if(command === `ping`) {
-    let embed = new Discord.RichEmbed()
-    .setColor(3447003)
-    .setTitle("Pong!!")
-    .setDescription(`${client.ping} ms,`)
-    .setFooter(`Requested by | ${msg.author.tag}`);
-    msg.delete().catch(O_o=>{})
-    msg.channel.send(embed);
-    }
-});
 
 
 client.login(process.env.BOT_TOKEN);
