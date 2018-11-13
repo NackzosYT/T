@@ -16,8 +16,6 @@ const ytdl = require('ytdl-core');
 
 const fs = require('fs');
 
-const gif = require("gif-search");
-
 const client = new Discord.Client({disableEveryone: true});
 
 const prefix = "*";
@@ -45,17 +43,6 @@ client.on('message', async msg =>{
 });
 /////////////////////////
 
-/////////////////////////
-////////////////////////
-//////////////////////
-/////////////////////////
-////////////////////////
-//////////////////////
-
-/////////////////////////
-////////////////////////
-//////////////////////
-/////////////////////////
 ////////////////////////
 //////////////////////
 client.on('message', async msg => { 
@@ -284,6 +271,7 @@ function play(guild, song) {
 }
 
 
+
 client.on('message', message => {
     if (message.content === 'help') {
         let helpEmbed = new Discord.RichEmbed()
@@ -312,9 +300,6 @@ client.on('message', message => {
       message.channel.send(helpEmbed);
     }
 });
-
-
-
 
 
 
