@@ -406,12 +406,11 @@ message.author.send(`
 
 ❧ رابط ➺ رابط انفايت للسيرفر
 ❧ Breport ➺ تبليغ / لازم في روم اسمه repoerts
-❧ Bavatar ➺ عرض صورتك او شخص تمنشنه
-❧ Brooms ➺ لعرض الرومات الموجودة في السيرفر
 ❧ Broles ➺ لعرض الرتب الموجودة في السيرفر
 ❧ Bsay ➺ البوت يكرر كلام انته تحدده
 ❧ Bid ➺ لعرض معلوماتك
 ❧ Bnew ➺ لانشاء تذكرة
+
 ─════════════ {✯Blood,Server✯} ════════════─
 **
 `);
@@ -426,42 +425,6 @@ message.author.send(`
 
 
 
-
-  client.on('message', message => {
-    if (message.content === "Brooms") {
-                      if (!message.guild) return;
-
-        var channels = message.guild.channels.map(channels => `${channels.name}, `).join(' ')
-        const embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .addField(${message.guild.name},`**Rooms:white_check_mark:**`)
-        .addField(':arrow_down: Rooms Number. :heavy_check_mark:',`** ${message.guild.channels.size}**`)
-        
-.addField(':arrow_down:Rooms  Name. :heavy_check_mark::',`**[${channels}]**`)
-        message.channel.sendEmbed(embed);
-    }
-});
-
-
-client.on('message', message => {
-    if (message.content === "Broles") {
-        var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
-        const embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .addField('الرتب:',`**[${roles}]**`)
-        message.channel.sendEmbed(embed);
-    }
-});
-client.on('message' , message => {
-  var prefix = "B";
-  if(message.author.bot) return;
-  if(message.content.startsWith(prefix + "ping")) {
- message.channel.send('Pong...').then((msg) => {
-      msg.edit(\`\`\javascript\nTime taken: ${msg.createdTimestamp - message.createdTimestamp} ms.\nDiscord API: ${Math.round(client.ping)} ms.\`\`\``);
- })
-  }  
- });
- 
 
 
  
