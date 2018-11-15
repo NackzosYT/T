@@ -121,6 +121,8 @@ client.on ("guildMemberRemove", member => {
 
 
 
+client.on('message', message => {
+var prefix = "B";
 Rocket.on('message',function(message) {
     let toKick = message.mentions.users.first();
     let toReason = message.content.split(" ").slice(2).join(" ");
@@ -152,6 +154,8 @@ Rocket.on('message',function(message) {
 
 
 
+client.on('message', message => {
+var prefix = "B";
 Rocket.on("message", function(message) {
     let toBan = message.mentions.users.first();
     let toReason = message.content.split(" ").slice(2).join(" ");
