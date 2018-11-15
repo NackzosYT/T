@@ -418,71 +418,6 @@ message.author.send(`
  
  
  
-  client.on('message', message => {
-  if (message.author.codes) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "ban") {
-               if(!message.channel.guild) return message.reply('* This command only for servers*');
-         
-  if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("*انت لا تملك الصلاحيات المطلوبه*");
-  if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("*I Don't Have ` BAN_MEMBERS ` Permission*");
-  let user = message.mentions.users.first();
-  
-  if (message.mentions.users.size < 1) return message.reply("*منشن شخص*");
-  if (!message.guild.member(user)
-  .bannable) return message.reply("*يجب ان تكون رتبة البوت اعلي من رتبه الشخص المراد تبنيدة*");
-
-
-  message.guild.member(user).ban(7, user);
-
-message.channel.send(`**:white_check_mark: ${user.tag} banned from the server ! :airplane: **  `)
-
-}
-});
-
-
-client.on('message', message => {
-const prefix = "B";
-  if (message.author.kick) return;
-  if (!message.content.startsWith(prefix)) return;
-
-  let command = message.content.split(" ")[0];
-  command = command.slice(prefix.length);
-
-  let args = message.content.split(" ").slice(1);
-
-  if (command == "kick") {
-               if(!message.channel.guild) return;
-         
-  if(!message.guild.member(message.author).hasPermission("KICK_MEMBERS")) return message.reply("You Don't Have KICK_MEMBERS Permission").then(msg => msg.delete(5000));
-  if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("I Don't Have KICK_Members Permission");
-  let user = message.mentions.users.first();
-  let reason = message.content.split(" ").slice(2).join(" ");
-
-  if (message.mentions.users.size < 1) return message.reply("منشن شخص");
-  if(!reason) return message.reply ("اكتب سبب الطرد");
-  if (!message.guild.member(user)
-  .bannable) return message.reply("لايمكنني طرد شخص اعلى من رتبتي");
-
-  message.guild.member(user).kick(7, user);
-
-  const banembed = new Discord.RichEmbed()
-  .setAuthor('Kicked !', user.displayAvatarURL)
-  .setColor("RANDOM")
-  .setTimestamp()
-  .addField("User:",  [ + ${user.tag} + ])
-  .addField("By:", [  + ${message.author.tag} +  ])
-  .addField("Reason:", [ + ${reason} +  ])
-  client.channels.get("492086928397565952").send({embed : banembed})
-}
-});
-
 
 client.on("message", (message) => {
 if (message.content.startsWith("Bct")) {
@@ -503,25 +438,6 @@ if (message.content.startsWith("Bcv")) {
 }
 });
 
-
-client.on('message',async message => {
-    if(message.content.startsWith(prefix + "setVoice")) {
-    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ *ليس لديك الصلاحيات الكافية*');
-    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ *ليس معي الصلاحيات الكافية*');
-    message.channel.send('✅| *تم عمل الروم بنجاح*');
-    message.guild.createChannel(Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ] , 'voice').then(c => {
-      console.log(Voice online channel setup for guild: \n ${message.guild.name});
-      c.overwritePermissions(message.guild.id, {
-        CONNECT: false,
-        SPEAK: false
-      });
-      setInterval(function() {
-        c.setName(Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ])
-      },1000);
-    });
-    }
-  });
-  
 
   client.on('message', message =>{
     let messageArray = message.content.split(" ");
