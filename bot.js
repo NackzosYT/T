@@ -14,6 +14,23 @@ const dataPro = JSON.parse(fs.readFileSync('./walls.json', 'utf8'));
 let done = {};
 const prefix = 'B'
 
+
+
+
+client.on ("guildMemberAdd", member => {
+  
+   var role = member.guild.roles.find ("name", "• Blood");
+   member.addRole (role);
+  
+})
+
+client.on ("guildMemberRemove", member => {
+   
+})
+
+
+
+
 //best
 var data = JSON.parse(fs.readFileSync('data.json','utf8'))
     client.on('guildMemberRemove', (u) => {
