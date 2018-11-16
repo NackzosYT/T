@@ -14,17 +14,6 @@ const dataPro = JSON.parse(fs.readFileSync('./walls.json', 'utf8'));
 let done = {};
 const prefix = 'B'
 
-
-
-client.on ("guildMemberAdd", member => {
-  
-   var role = member.guild.roles.find ("name", "• Blood");
-   member.addRole (role);
-  
-})
-
-
-
 //best
 var data = JSON.parse(fs.readFileSync('data.json','utf8'))
     client.on('guildMemberRemove', (u) => {
@@ -797,84 +786,6 @@ client.on('message', message => {
 });
 
 
-const temp = JSON.parse(fs.readFileSync('./temp.json', 'utf8'));
-client.on('message', async message => {
- if(message.channel.type === "dm") return;
-  if(message.author.bot) return;
-   if(!temp[message.guild.id]) temp[message.guild.id] = {
-    time: "3000",
-     category : 'click here',
-      channel : 'click here'
-       }
-        if(message.content.startsWith('Btemp on')){
-         if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
-          var ggg= message.guild.createChannel('click here', 'category').then(cg => {
-           var ccc =message.guild.createChannel('click here', 'voice').then(ch => {
-            ch.setParent(cg)
-             message.channel.send('**Done ,**')
-              client.on('message' , message => {
-               if(message.content === 'Btemp off') {
-                if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
-                 cg.delete()
-                  ch.delete()
-                   message.channel.send('**Done ,**')
-                    }
-                     });
-                      const time = temp[message.guild.id].time
-                       client.on('message' , message => {
-                        if (message.content.startsWith(prefix + "temptime")) {
-                         if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
-                          let newTime= message.content.split(' ').slice(1).join(" ")
-                          if(!newTime) return message.reply(`**${prefix}temptime <time>  \`1000 = 1s\`**`)
-	                 if(isNaN(newTime)) return message.reply(`** The Time Be Nambers :face_palm: **`);
-	                if(newTime < 1) return message.reply(`**The Time Be Up \`3000s\`**`)
-                       temp[message.guild.id].time = newTime
-                      message.channel.send(`**Temp Rooms Time Change To \`${newTime}\`**`);
-                     }
-                    });
-                   client.on('voiceStateUpdate', (old, neww) => {
-                  let newUserChannel = neww.voiceChannel
-                 let oldUserChannel = old.voiceChannel
-                temp[message.guild.id].category = cg.id
-               temp[message.guild.id].channel = ch.id
-              let channel = temp[message.guild.id].channel
-             let category = temp[message.guild.id].category
-            if(oldUserChannel === undefined && newUserChannel !== undefined && newUserChannel.id == channel) {
-           neww.guild.createChannel(neww.displayName , 'voice').then(c => {
-          c.setParent(category)
-         let scan = setTimeout(()=>{
-        if(!neww.voiceChannel) {
-       c.delete();
-      client.channels.get(channel).overwritePermissions(neww, {
-     CONNECT:true,
-    SPEAK:true
-   })
-  }
- }, temp[neww.guild.id].time);
-  c.overwritePermissions(neww, {
-   CONNECT:true,
-    SPEAK:true,
-     MANAGE_CHANNEL:true,
-      MUTE_MEMBERS:true,
-       DEAFEN_MEMBERS:true,
-	MOVE_MEMBERS:true,
-	 VIEW_CHANNEL:true
-	  })
-	   neww.setVoiceChannel(c)
-            })
-             client.channels.get(channel).overwritePermissions(neww, {
-	      CONNECT:false,
-	       SPEAK:false
-		})
-               }
-              })
-             })
-           })
-          }
-         fs.writeFile("./temp.json", JSON.stringify(temp), (err) => {
-        if(err) console.error(err)
-       })
-      });
 
 
 client.on('message', message => {
@@ -4084,81 +3995,8 @@ client.on('message', message => {
     };
 });
 
-client.on('message', async message => {
-    var moment = require('moment');
-    var mmss = require('ms')
-    let date = moment().format('Do MMMM YYYY , hh:mm');
-    let User = message.mentions.users.first();
-    let Reason = message.content.split(" ").slice(3).join(" ");
-    let messageArray = message.content.split(" ");
-    let time = messageArray[2];
-    if(message.content.startsWith(prefix + "tempban")) {
-       if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.channel.send("**You dont have ban_members permission :/ **");
-       if(!User) message.channel.send("**Mention Someone**");
-       if(User.id === client.user.id) return message.channel.send("**Why you want to ban me ? :/**");
-       if(User.id === message.guild.owner.id) return message.channel.send("**Nice try man :> you cant ban the ownership**");
-       if(!time) return message.channel.send("**- اكتب الوقت**");
-       if(!time.match(/[1-60][s,m,h,d,w]/g)) return message.channel.send('**- Error in this Duration**');
-       if(!Reason) message.channel.send("**- اكتب Reason**");
-       let banEmbed = new Discord.RichEmbed()
-       .setAuthor(`New Banned User !`)
-       .setThumbnail(message.guild.iconURL || message.guild.avatarURL)
-       .addField('- Banned By: ',message.author.tag,true)
-       .addField('- Banned User:', `${User}`)
-       .addField('- Reason:',Reason,true)
-       .addField('- Time & Date:', `${message.createdAt}`)
-       .addField('- Duration:',time,true)
-       .setFooter(message.author.tag,message.author.avatarURL);
-       let incidentchannel = message.guild.channels.find(`name`, "incidents");
-  if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
-  incidentchannel.send(banEmbed);
-  message.channel.send(`**:white_check_mark: ${User} has been banned :airplane: **`).then(() => message.guild.member(User).ban({reason: Reason}))
-  User.send(`**:airplane: You are has been banned in ${message.guild.name} reason: ${Reason} by: ${message.author.tag} :airplane:**`)
-       .then(() => { setTimeout(() => {
-           message.guild.unban(User);
-       }, mmss(time));
-    });
-   }
-  });
 
-const mmss = require('ms');
-client.on('message', async message => {
-    let muteReason = message.content.split(" ").slice(3).join(" ");
-    let mutePerson = message.mentions.users.first();
-    let messageArray = message.content.split(" ");
-    let muteRole = message.guild.roles.find("name", "Muted");
-    let time = messageArray[2];
-    if(message.content.startsWith(prefix + "tempmute")) {
-        if(!message.member.hasPermission('MUTE_MEMBERS')) return message.channel.send('**للأسف لا تمتلك صلاحية** `MUTE_MEMBERS`' );
-        if(!mutePerson) return message.channel.send("**- منشن الشخص يلي تبي تعطيه الميوت**");
-        if(mutePerson === message.author) return message.channel.send('**- ماتقدر تعطي نفسك ميوت**');
-        if(mutePerson === client.user) return message.channel.send('**- ماتقدر تعطي البوت ميوت :)**');
-        if(message.guild.member(mutePerson).roles.has(muteRole.id)) return message.channel.send('**- هذا الشخص ميوتد بالفعل**');
-        if(!muteRole) return message.guild.createRole({ name: "Muted", permissions: [] });
-        if(!time) return message.channel.send("**- اكتب الوقت**");
-        if(!time.match(/[1-60][s,m,h,d,w]/g)) return message.channel.send('**- Error in this duration maybe the bot not support this duration**');
-        if(!muteReason) return message.channel.send("**- اكتب السبب**");
-        message.guild.member(mutePerson).addRole(muteRole);
-        message.channel.send(`**:white_check_mark: ${mutePerson} has been muted ! :zipper_mouth: **`)
-        message.delete()
-        let muteEmbed = new Discord.RichEmbed()
-        .setTitle(`New Muted User`)
-        .setThumbnail(message.guild.iconURL)
-        .addField('- Muted By:',message.author,true)
-        .addField('- Muted User:', `${mutePerson}`)
-        .addField('- Reason:',muteReason,true)
-        .addField('- Duration:',`${mmss(mmss(time), {long: true})}`)
-        .setFooter(message.author.username,message.author.avatarURL);
-        let incidentchannel = message.guild.channels.find(`name`, "incidents");
-        if(!incidentchannel) return message.channel.send("Can't find incidents channel.");
-        incidentchannel.sendEmbed(muteEmbed)
-        mutePerson.send(`**You Are has been muted in ${message.guild.name} reason: ${muteReason}**`)
-        .then(() => { setTimeout(() => {
-           message.guild.member(mutePerson).removeRole(muteRole);
-       }, mmss(time));
-    });
-    }
-});
+
 
 client.on('message',  async  message  =>  {
     let  user  =  message.mentions.users.first();
@@ -4187,29 +4025,7 @@ message.reply(`**:warning: ${user} has been warned !:warning:**`).then(msg  =>  
 })
 
 
-        
-client.on('message', message => {
-    if(!message.channel.guild) return;
-let args = message.content.split(' ').slice(1).join(' ');
-if (message.content.startsWith('Bownerbc')){
-if (message.author.id !== '228174175007801354','296047056873848832','212250411351015425') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **')
-if(!message.author.id !== '228174175007801354','296047056873848832','212250411351015425') return;
-message.channel.sendMessage('جار ارسال |✅')
-client.users.forEach(m =>{
-m.sendMessage(args)
-})
-}
-});
-client.on('message', message => {
-  if (message.content.startsWith(prefix + 'users1')) {
-let msg =  client.guilds.map(guild => `**${guild.name}** عدد الاعضاء: ${guild.memberCount}`).join('\n');
-let embed = new Discord.RichEmbed()
-.setTitle(`${client.guilds.size}سيرفرات `)
-.setDescription(`${msg}`)
-.setColor("#00ff47");
-message.channel.send(embed);
-}
-});
+       
 let ar = JSON.parse(fs.readFileSync(`./Data/AutoRole.json`, `utf8`))
 client.on('guildMemberAdd', member => {
 if(!ar[member.guild.id]) ar[member.guild.id] = {
@@ -5470,11 +5286,6 @@ and to turn on the autorole type ${prefix}autorole toggle)**
 ❯ ${prefix}ban → To ban a member **Permanently**
 ❯ ${prefix}role → To give someone a role (you can use ${prefix}role all to give everyone the rank of your choice)
 ❯ ${prefix}-role → To Pull the rank of a particular person (you can use ${prefix}-role all to Pull everyone the rank of your choice)
-❯ ${prefix}temp on → To Turn on the temporary rooms 
-❯ ${prefix}temp off → To Turn off the temporary rooms 
-❯ ${prefix}tempban → To ban a member **Temporary**
-❯ ${prefix}mute → To mute a member **Temporary**
-❯ ${prefix}tempmute → To mute a member **Temporary**
 ❯ ${prefix}kick → To kick a member
 ❯ ${prefix}unban → Unban member by id
 ❯ ${prefix}unmute → Unmutes a member
