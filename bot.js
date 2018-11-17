@@ -6050,5 +6050,15 @@ const secreT = [
 
 
 
-});
+
+
+
+
+
+
+
+
+
+
+
 client.login(process.env.BOT_TOKEN); 
