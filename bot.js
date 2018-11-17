@@ -6046,7 +6046,9 @@ const secreT = [
   console.log('[id] Send By: ' + message.author.username)
     }
 });
-    }})
 
 
+
+
+});
 client.login(process.env.BOT_TOKEN); 
