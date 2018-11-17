@@ -5372,10 +5372,6 @@ if (message.content.startsWith(prefix + "uptime")) {
 
 
 
-client.on('ready', () => {
-  console.log(`AutoRole Code Started By Friends Team`);
-});
-
 
 
 
