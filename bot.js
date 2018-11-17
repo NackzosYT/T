@@ -3066,7 +3066,7 @@ message.author.send(`**مدة الرابط : يـوم
   
   
   
-  Rocket.on('message', message => {//av mension
+  client.on('message', message => {//av mension
     if (message.content.startsWith("Bavatar")) {
 
         var mentionned = message.mentions.users.first();
