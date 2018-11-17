@@ -3062,6 +3062,4 @@ message.channel.send(`**:white_check_mark: ${user} has been banned :airplane: **
 
 
 
-
-
-client.login(process.env.TOKEN)
+client.login(process.env.BOT_TOKEN); 
