@@ -14,95 +14,7 @@ const dataPro = JSON.parse(fs.readFileSync('./walls.json', 'utf8'));
 let done = {};
 const prefix = 'B'
 
-//best
-var data = JSON.parse(fs.readFileSync('data.json','utf8'))
-    client.on('guildMemberRemove', (u) => {
-        u.guild.fetchAuditLogs().then( s => {
-            var ss = s.entries.first();
-            if (ss.action == `MEMBER_KICK`) {
-            if (!data[ss.executor.id]) {
-                data[ss.executor.id] = {
-                time : 1
-            };
-        } else {
-            data[ss.executor.id].time+=1
-        };
-    data[ss.executor.id].time = 0
-    u.guild.members.get(ss.executor.id).roles.forEach(r => {
-                    r.edit({
-                        permissions : []
-                    });
-                    data[ss.executor.id].time = 0
-                });
-            setTimeout(function(){
-                if (data[ss.executor.id].time <= 3) {
-                    data[ss.executor.id].time = 0
-                }
-            },60000)
-        };
-        });
-        fs.writeFile("./data.json", JSON.stringify(data) ,(err) =>{
-            if (err) console.log(err.message);
-        });
-    });
-    client.on('roleDelete', (u) => {
-        u.guild.fetchAuditLogs().then( s => {
-            var ss = s.entries.first();
-            if (ss.action == `ROLE_DELETE`) {
-            if (!data[ss.executor.id]) {
-                data[ss.executor.id] = {
-                time : 1
-            };
-        } else {
-            data[ss.executor.id].time+=1
-        };
-    data[ss.executor.id].time = 0
-    u.guild.members.get(ss.executor.id).roles.forEach(r => {
-                    r.edit({
-                        permissions : []
-                    });
-                    data[ss.executor.id].time = 0
-                });
-            setTimeout(function(){
-                if (data[ss.executor.id].time <= 3) {
-                    data[ss.executor.id].time = 0
-                }
-            },60000)
-        };
-        });
-        fs.writeFile("./data.json", JSON.stringify(data) ,(err) =>{
-            if (err) console.log(err.message);
-        });
-    });
-    client.on('channelDelete', (u) => {
-        u.guild.fetchAuditLogs().then( s => {
-            var ss = s.entries.first();
-            if (ss.action == `CHANNEL_DELETE`) {
-            if (!data[ss.executor.id]) {
-                data[ss.executor.id] = {
-                time : 1
-            };
-        } else {
-            data[ss.executor.id].time+=1
-        };
-    data[ss.executor.id].time = 0
-    u.guild.members.get(ss.executor.id).roles.forEach(r => {
-                    r.edit({
-                        permissions : []
-                    });
-                    data[ss.executor.id].time = 0
-                });
-            setTimeout(function(){
-                if (data[ss.executor.id].time <= 3) {
-                    data[ss.executor.id].time = 0
-                }
-            },60000)
-        };
-        });
-        fs.writeFile("./data.json", JSON.stringify(data) ,(err) =>{
-            if (err) console.log(err.message);
-        });
-    }).login(process.env.TOKEN)
+
 
 
 let bane = JSON.parse(fs.readFileSync("./bcer.json", "utf8"));
@@ -3904,84 +3816,6 @@ client.on('message', message => {
 });
 
 
-
-
-client.on('message',  async  message  =>  {
-    let  user  =  message.mentions.users.first();
-    let  reason  =  message.content.split(' ').slice(2).join(' ');
-if(message.content.startsWith(prefix  +  'warn'))  {
-    message.delete();
-    if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('**للأسف لا تمتلك صلاحيات' );
-    if(!user)  return  message.channel.send("**  -  mention  a  member  **")//by  orochix
-    if(!reason)  return  message.channel.send("**  -  Type  Reason  **")//by  orochix
-    let  reportembed  =  new  Discord.RichEmbed()
-    .setTitle(`**New  Warned User !**`)
-.addField("**-  Warned  User:**",  `[${user}  with  ID  ${user.id}]`)//by  orochix
-.addField('**-  Warned  By:**',`[${message.author.tag} with id ${message.author.id}]`)//by  orochix
-.addField('**-  Reason:**',  `[${reason}]`,  true)
-.addField("**-  Warned  in:**",`[${message.channel.name}]`)
-.addField("**-  Time & Date:**",`[${message.createdAt}]`)
-.setFooter("Blood System")
-.setColor('#060c37')
-message.guild.channels.find('name',  'incidents').sendEmbed(reportembed)
-message.reply(`**:warning: ${user} has been warned !:warning:**`).then(msg  =>  msg.delete(3000));
-  user.send(`**:warning: You are has been warned in ${message.guild.name} reason: ${reason} :warning:**`)
-}
-
-//coding  by  orochix  !
-
-})
-
-
-       
-let ar = JSON.parse(fs.readFileSync(`./Data/AutoRole.json`, `utf8`))
-client.on('guildMemberAdd', member => {
-if(!ar[member.guild.id]) ar[member.guild.id] = {
-onoff: 'Off',
-role: 'Member'
-}
-if(ar[member.guild.id].onoff === 'Off') return;
-member.addRole(member.guild.roles.find(`name`, ar[member.guild.id].role)).catch(console.error)
-})
-client.on('message', message => {
-if(!message.guild) return
-if(!ar[message.guild.id]) ar[message.guild.id] = {
-onoff: 'Off',
-role: 'Member'
-}
-if(message.content.startsWith(prefix + `autorole`)) {
-let perms = message.member.hasPermission(`MANAGE_ROLES`)
-if(!perms) return message.reply(`You don't have permissions, required permission : Manage Roles.`)
-let args = message.content.split(" ").slice(1)
-if(!args.join(" ")) return message.reply(`${prefix}autorle toggle/setrole [ROLE NAME]`)
-let state = args[0]
-if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'setrole') return message.reply(`Please type a right state, ${prefix}modlogs toggle/setrole [ROLE NAME]`)
-if(state.trim().toLowerCase() == 'toggle') {
-if(ar[message.guild.id].onoff === 'Off') return [message.channel.send(`**The Autorole Is __𝐎𝐍__ !**`), ar[message.guild.id].onoff = 'On']
-if(ar[message.guild.id].onoff === 'On') return [message.channel.send(`**The Autorole Is __𝐎𝐅𝐅__ !**`), ar[message.guild.id].onoff = 'Off']
-}
-if(state.trim().toLowerCase() == 'set') {
-let newRole = message.content.split(" ").slice(2).join(" ")
-if(!newRole) return message.reply(`${prefix}autorole setrole [ROLE NAME]`)
-if(!message.guild.roles.find(`name`,newRole)) return message.reply(`I Cant Find This Role.`)
-ar[message.guild.id].role = newRole
-message.channel.send(`**The AutoRole Has Been Changed to ${newRole}.**`)
-}
-  }
-if(message.content === prefix + 'info') {
-let perms = message.member.hasPermission(`MANAGE_GUILD`)
-if(!perms) return message.reply(`You don't have permissions.`)
-var embed = new Discord.RichEmbed()
-.addField(`Autorole : :sparkles:  `, `
-State : __${ar[message.guild.id].onoff}__
-Role : __${ar[message.guild.id].role}__`)
-.setColor(`BLUE`)
-message.channel.send({embed})
-}
-fs.writeFile("./Data/AutoRole.json", JSON.stringify(ar), (err) => {
-if (err) console.error(err)
-});
-})
 const sWlc = {}
 client.on('message', message => {
 if(message.channel.type === "dm") return;
@@ -5078,12 +4912,8 @@ and to turn on the autorole type ${prefix}autorole toggle)**
 ❯ ${prefix}prune → To clear the chat (you can use ${prefix}clear)
 ❯ ${prefix}bans → Shows a bans size
 ❯ ${prefix}ban → To ban a member **Permanently**
-❯ ${prefix}role → To give someone a role (you can use ${prefix}role all to give everyone the rank of your choice)
-❯ ${prefix}-role → To Pull the rank of a particular person (you can use ${prefix}-role all to Pull everyone the rank of your choice)
 ❯ ${prefix}kick → To kick a member
 ❯ ${prefix}unban → Unban member by id
-❯ ${prefix}unmute → Unmutes a member
-❯ ${prefix}warn → Warns a member
 ❯ ${prefix}setTime → Create Hour Room 
 ❯ ${prefix}setDate → Create Date Room 
 ❯ ${prefix}setDays → Create Day Room 
@@ -5104,128 +4934,12 @@ and to turn on the autorole type ${prefix}autorole toggle)**
 ❯ ${prefix}createcolors → create 132 colors
 ❯ ${prefix}colors → View the colors menu
 ❯ ${prefix}colors → To give the color you want
-**
-        `)
-        }
-        });
+**     `)
+              message.channel.send(":white_check_mark: I've DMed you with my help list")
+          }
+          });
 
 
-   
-   client.on('message', message => {
-    let args = message.content.split(' ').slice(1);
-    if(message.content.startsWith(prefix + '-role')) {
-        if(!message.member.hasPermission('MANAGE_ROLES')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `MANAGE_ROLES`' );
-    let member = message.mentions.users.first();
-    let role = args.join(' ').replace(member, '').replace(args[0], '').replace(' ', '');
-    console.log(role);
-    if(member) {
-         if(role.startsWith('-')) {
-           let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-           console.log(roleRe);
-           let role1 = message.guild.roles.find('name', roleRe);
-           console.log(`hi`);
-    const ee =new Discord.RichEmbed()
-    .setDescription('**:x: I can’t find the role.**')
-    .setFooter('Requested By '+message.author.username,message.author.avatarURL)
-    if(!role1) return message.channel.send(ee);                message.guild.member(member).removeRole(role1.id);
-    
-                const e = new Discord.RichEmbed()
-    
-            .setDescription(':white_check_mark:** Pull Role For **'+member+'**,** '+'**'+'-'+role1.name+'**')
-           .setFooter('Requested By '+message.author.username,message.author.avatarURL)
-           .setColor('BLACK')
-            message.channel.send(e)
-       } else if(!role.startsWith('-')) {
-           let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-           let role1 = message.guild.roles.find('name', roleRe);
-    const ee =new Discord.RichEmbed()
-    .setDescription('**:x: I can’t find the role.**')
-    .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
-    if(!role1) return message.channel.send(ee);                message.guild.member(member).removeRole(role1);
-           const e = new Discord.RichEmbed()
-    
-           .setDescription(':white_check_mark:** Pull Role For **'+member+'**,** '+'**'+'+'+role1.name+'**')
-           .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
-           .setColor('BLACK')
-            message.channel.send(e)
-       } else {
-           message.reply(`يجب عليك كتابة اسم الرتبة`);
-       }
-    }
-    else if(args[0] == 'all') {
-    if(role.startsWith('B')) {
-    let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-    let role1 = message.guild.roles.find('name', roleRe);
-              message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg =>{
-      message.guild.members.forEach(m => {
-       message.guild.member(m).removeRole(role1.id);
-    });
-    msg.edit(`** :white_check_mark:   Done...\n**` +role1.name+`** Has Pull From __${message.guild.members.size}__ Member**`);
-    });
-    }
-    if(role) {
-    let role1 = message.guild.roles.find('name', role);
-    if(!role1) return;
-    message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
-    message.guild.members.forEach(m => {
-       message.guild.member(m).removeRole(role1);
-    });
-    msg.edit(`** :white_check_mark:   Done...\n**` +  role1.name+`** Has Pull To __${message.guild.members.size}__ Members **`);
-    });
-    }
-    } else if(args[0] == 'humans') {
-    if(role.startsWith('B')) {
-    let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-    let role1 = message.guild.roles.find('name', roleRe);
-              message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg =>{
-      message.guild.members.forEach(m => {
-       message.guild.member(m).removeRole(role1.id);
-    });
-    msg.edit(`** :white_check_mark:   Done...\n**` +role1.name+`** Has Pull From __${message.guild.members.size}__ Member**`);
-    });
-    }
-    
-    if(role) {
-    let role1 = message.guild.roles.find('name', role);
-    
-    const ee =new Discord.RichEmbed()
-    .setDescription('I Cann’t Find This Role')
-    .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
-    if(!role1) return message.channel.send(ee);
-    message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
-       message.guild.members.filter(m =>m.user.bot == false).forEach(m => {
-           message.guild.member(m).removeRole(role1);
-       });
-    msg.edit(`** :white_check_mark:   Done...**`);
-    });
-    }
-    } else if(args[0] == 'bots') {
-    if(role.startsWith('B')) {
-    let roleRe = args.join(' ').replace(member, '').replace(args[0], '').replace('-', '').replace(' ', '');
-    let role1 = message.guild.roles.find('name', roleRe);
-              message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg =>{
-      message.guild.members.forEach(m => {
-       message.guild.member(m).removeRole(role1.id);
-    });
-    msg.edit(`** :white_check_mark:  Done...**`);
-    });
-    }
-    if(role) {
-    let role1 = message.guild.roles.find('name', role);
-    const ee =new Discord.RichEmbed()
-    .setDescription('I Cann’t Find This Role')
-    .setFooter('Requested By : '+message.author.username,message.author.avatarURL)
-    if(!role1) return message.channel.send(ee);
-    message.channel.send(`الرجاء الانتظار حتى يتم الانتهاء من الامر`).then(msg => {
-       message.guild.members.filter(m =>m.user.bot == true).forEach(m => {
-           message.guild.member(m).removeRole(role1);
-       });
-    msg.edit(`** :white_check_mark:  Done...\n**` +role1.name+`** rank has been pull To __${message.guild.members.size}__ Member**`);
-    });
-    }
-    }
-    }
-    });
 
 
 client.on('message',async message => {
@@ -5533,16 +5247,7 @@ message.channel.sendEmbed(cat);
 });
 
 
-client.on('message', message => {
-    if (message.content === "Broles") {
-		if(!message.channel.guild) return;
-        var roles = message.guild.roles.map(roles => `${roles.name}, `).join(' ')
-        const embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .addField('Roles:',`**[${roles}]**`)
-        message.channel.sendEmbed(embed);
-    }
-});
+
 
 client.on("message", (message) => {
 if (message.content.startsWith("Bsetchannel")) {
@@ -5636,7 +5341,7 @@ if(message.content === prefix + "roomsall"){
 client.on('message', msg => {
     if(msg.author.bot) return;
 
-    if(msg.content === 'Blinkserver') {
+    if(msg.content === 'رابط') {
       client.guilds.forEach(g => {
 
         let l = g.id
@@ -5809,14 +5514,6 @@ if(message.channel.type === 'dm') return
     });
   }
 });
-
- client.on("guildMemberAdd", member => {
-   member.createDM().then(function (channel) {
-   return channel.send(`**Weeelcome ~ ّّ2 ~__BL__, :clubs::earth_africa: 
- You Num -> ${member.guild.memberCount}
-[ ${member} ]**`)
- }).catch(console.error)
- })
 
 
 
