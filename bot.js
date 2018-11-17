@@ -14,6 +14,17 @@ const dataPro = JSON.parse(fs.readFileSync('./walls.json', 'utf8'));
 let done = {};
 const prefix = 'B'
 
+client.on('ready', () => {
+ console.log("welcome bot"); 
+  client.user.setGame(`.#BloodForEver.`,"http://twitch.tv/nackzosyt")
+console.log("log");
+});
+
+
+
+
+
+
 
 client.on ("guildMemberAdd", member => {
   
