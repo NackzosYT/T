@@ -355,50 +355,33 @@ function play(guild, song) {
 
 
 
+client.on('message', message => {
+if (message.content.split(' ')[0] == '-m')
+ message.guild.members.forEach( member => {
+         if (!message.member.hasPermission("CONNECT"))  return;
+member.send( `${member} ! ` + "**" + message.guild.name + " : ** " + message.content.substr(3));
+                                                            message.delete();
+});
+});
 
-
-
-
-
-
-
-  client.on('message', message => {
-            if(!message.channel.guild) return;
-  if(message.content.startsWith('Bbc')) {
-  if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
-if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`' );
-  let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
-  let copy = "Blood Server";
-  let request = `Requested By ${message.author.username}`;
-  if (!args) return message.reply('**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**');message.channel.send(`**هل أنت متأكد من إرسالك البرودكاست؟ \nمحتوى البرودكاست:** \` ${args}\``).then(msg => {
-  msg.react('✅')
-  .then(() => msg.react('❌'))
-  .then(() =>msg.react('✅'))
-
-  let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
-  let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
-     let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
-  let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
-  reaction1.on("collect", r => {
-  message.channel.send(`☑ |   ${message.guild.members.size} يتم ارسال البرودكاست الى عضو `).then(m => m.delete(5000));
-  message.guild.members.forEach(m => {
-var bc = new
-Discord.RichEmbed()
-.setColor('RANDOM')
-.addField('🔰السيرفر🔰', message.guild.name)
-.setFooter(copy, client.user.avatarURL);
-  m.send({ embed: bc })
-  msg.delete();
-  })
-  })
-  reaction2.on("collect", r => {
-  message.channel.send(`**Broadcast Canceled.**`).then(m => m.delete(5000));
-  msg.delete();
-  })
-  })
-  }
-  })
-
+//جميع الحقوق محفوظه لهيكس وخبز
+client.on("message", message => {
+    var prefix = "B";
+ 
+            var args = message.content.substring(prefix.length).split(" ");
+            if (message.content.startsWith(prefix + "bc")) {
+                         if (!message.member.hasPermission("CONNECT"))  return;
+                            let embed4 = new Discord.RichEmbed()
+             .setDescription("**:white_check_mark: | جاري ارسال البرودكاست**")
+           .addField("مرسل البرودكاست" , message.author)
+          .addField("نص البرودكاست" ,args.join("  "))
+                            .addField("عدد الاعضاء المرسل لهم :busts_in_silhouette:" ,` **[${message.guild.memberCount}]**`,true)
+                                                            .setColor("#008000")
+                                message.channel.sendEmbed(embed4);
+                                                      message.delete();
+                            
+                          }
+});
 
 
 
@@ -3056,9 +3039,77 @@ message.channel.send(`**:white_check_mark: ${user} has been banned :airplane: **
   
   
   
-  
+  client.on('message', message => {
+    if (message.content.startsWith("رابط")) {
+
+  message.channel.createInvite({
+        thing: true,
+        maxUses: 10,
+        maxAge: 86400
+    }).then(invite =>
+      message.author.sendMessage(invite.url)
+    )
+  message.channel.send("**تم ارسال الرابط برسالة خاصة**")
+
+message.author.send(`**مدة الرابط : يـوم
+عدد استخدامات الرابط : 10**`)
+
+
+    }
+});
   
 
+
+  
+  
+  
+  
+  
+  
+  Rocket.on('message', message => {//av mension
+    if (message.content.startsWith("Bavatar")) {
+
+        var mentionned = message.mentions.users.first();
+    var king66s;
+      if(mentionned){
+          var king66s = mentionned;
+      } else {
+          var king66s = message.author;
+
+      }
+        const embed = new Discord.RichEmbed()
+        .setColor("RANDOM")
+          .setAuthor(message.author.username, message.author.avatarURL)
+        .setImage(`${king66s.avatarURL}`)
+      message.channel.sendEmbed(embed);
+
+    }
+  });
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 
 
