@@ -41,14 +41,8 @@ client.on('message', message => {
 
 
 
-
-
-
-
-
-
 client.on('guildMemberAdd', member => {
-     const welcomer =  member.guild.channels.find('name', 'Blood');
+     const welcomer =  member.guild.channels.find('name', 'blood');
 
 const w = ['w1.png'];
          let Image = Canvas.Image,
@@ -115,7 +109,7 @@ welcomer.sendFile(canvas.toBuffer())
     while (!guild)
         guild = client.guilds.get("491686948130521112")
 channel.send(`**.#WeeeelcomeTo___Blood___.** :wine_glass:`)   
-        
+
 
 });
 
@@ -141,6 +135,7 @@ client.on("guildMemberAdd", (member) => {
                     console.log(3);
                     console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
  channel.send(` __***InvitedBy***__: ${Invite.inviter} ♥** `)             }
+ }
             dat[Inv] = Invite.uses;
         })
     })
