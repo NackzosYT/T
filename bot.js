@@ -136,8 +136,7 @@ welcomer.sendFile(canvas.toBuffer())
       
                     
 
-})
-      });     
+
 
     let channel = member.guild.channels.get('513704573899243520');
     if (!channel) {
