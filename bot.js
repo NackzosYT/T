@@ -50,7 +50,7 @@ client.on('message', message => {
 client.on('guildMemberAdd', member => {
      const welcomer =  member.guild.channels.find('name', 'Blood');
 
-const w = ['./w1.png'];
+const w = ['w1.png'];
          let Image = Canvas.Image,
             canvas = new Canvas(400, 239),
             ctx = canvas.getContext('2d');
