@@ -178,7 +178,7 @@ client.on("guildMemberAdd", (member) => {
                     console.log(3);
                     console.log(`${member} joined over ${Invite.inviter}'s invite ${Invite.code}`)
  channel.send(` __***InvitedBy***__: ${Invite.inviter} ♥** `)             }
- }
+
             dat[Inv] = Invite.uses;
         })
     })
