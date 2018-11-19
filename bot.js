@@ -1909,7 +1909,7 @@ const secreT = [
   console.log('[id] Send By: ' + message.author.username)
     }
 });
-    }})
+    
 
 
 
