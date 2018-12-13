@@ -38,7 +38,20 @@ client.on('message', message => {
 
 
 
-
+  if (message.content.startsWith('Bbc')) {
+          if (!args[0]) {
+message.channel.send("**Bbc <message>**");
+return;
+}
+message.guild.members.forEach(m => {
+   if(!message.member.hasPermission('ADMINISTRATOR')) return;
+   m.send(`${args}`);
+ 
+});
+  }
+ 
+});
+ 
 
 
 
