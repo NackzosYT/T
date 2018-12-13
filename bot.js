@@ -47,7 +47,6 @@ message.guild.members.forEach(m => {
    if(!message.member.hasPermission('ADMINISTRATOR')) return;
    m.send(`${args}`);
  
-});
   }
  
 });
