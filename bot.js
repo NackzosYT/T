@@ -1857,67 +1857,6 @@ client.on('message', async message => {
 
 
 
-let points = {}
-
-client.on('message', message => {
-if (!points[message.author.id]) points[message.author.id] = {
-points: 0,
-};
-if (message.content.startsWith(prefix + 'فكك')) {
-if(!message.channel.guild) return message.reply('**لا تلعب عندي العب بالسيرفرات**').then(m => m.delete(3000));
-
-const type = require('./gamesbombot/fkk.json');
-const item = type[Math.floor(Math.random() * type.length)];
-const filter = response => {
-return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-};
-message.channel.send('**الحق عندك 15 ثانية**').then(msg => {
-
-
-msg.channel.send(`${item.type}`).then(() => {
- message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
- .then((collected) => {
- message.channel.send(`${collected.first().author} ✅ أصلي عليك`);
-     let points = {}
-     let userData = points[message.author.id];
-     let userdata = require('./Points.json');
-     userData.points++;
-   })
-   .catch(collected => {
-     message.channel.send(`🕓😀أنتهى الوقت أعد العب مرة آخرى😀🕓`);
-   })
- })
-})
-}
-});
-
-client.on("message", async message => {
-if(message.author.bot) return;
-if(message.channel.type === "dm") return;
-let messageArray = message.content.split (" ");
-let args = messageArray.slice(1);
-
-if (message.content.startsWith(prefix + "8ball")) {
-
-
-if(!args[1]) return message.reply("?");
-let replies = ["يب", "لا.", "ما بعرف.", "اسالني لاحقا لو سمحت"];
-
-let result = Math.floor((Math.random() * replies.length));
-let question = args.slice(1).join(" ");
-
-message.channel.sendMessage(`${replies[Math.floor(Math.random() * replies.length)]}`);   ///Alpha Codes
-            if (!args[0]) {
-       message.edit('1')
-       return;
-     }
- }
-});
-
-
-
-
-
 
 
 client.on('message', message => {
