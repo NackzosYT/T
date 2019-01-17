@@ -521,7 +521,7 @@ function play(guild, song) {
 //bc
 
 client.on("message", message => {
-    if (message.content.startsWith("&bc")) {
+    if (message.content.startsWith("Ubc")) {
                  if (!message.member.hasPermission("ADMINISTRATOR"))  return;
   let args = message.content.split(" ").slice(1);
   var argresult = args.join(' ');
@@ -540,7 +540,7 @@ client.on("message", message => {
 
   client.on("message", message => {
   
-              if (message.content.startsWith(prefix + "&obc")) {
+              if (message.content.startsWith(prefix + "Uobc")) {
                            if (!message.member.hasPermission("ADMINISTRATOR"))  return;
     let args = message.content.split(" ").slice(1);
     var argresult = args.join(' '); 
